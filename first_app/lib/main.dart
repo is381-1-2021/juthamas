@@ -358,7 +358,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         ),
         TextFormField(
             decoration: InputDecoration(
-              icon: Icon(Icons.dangerous),
+              icon: Icon(Icons.person),
               hintText: 'Your Age',
               labelText: 'Ages'
             ),
@@ -375,18 +375,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             }
           },
         ),
-        TextFormField(
-            decoration: InputDecoration(
-              icon: Icon(Icons.star),
-              hintText: 'Student ID',
-              labelText: 'Student ID'
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty){
-                return 'Please Enter Student ID.';
-            }
-          },
-        ),
+       
         ElevatedButton(
           onPressed: (){
             if  (_formKey.currentState!.validate()){
