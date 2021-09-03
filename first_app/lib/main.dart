@@ -10,18 +10,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.amber,
-        accentColor: Colors.green,
+        primaryColor: Colors.orange,
+        accentColor: Colors.pink,
         textTheme: TextTheme(
           bodyText2: TextStyle(color: Colors.purple),
         ),
       ),
-      initialRoute: '/fourth',
+      initialRoute: '/5',
       routes: <String,WidgetBuilder> {
-        '/first': (context) => FirstPage(),
-        '/second': (context) => SecondPage(),
-        '/third': (context) => ThirdPage(),
-        '/fourth': (context) => FourthPage(),
+        '/1': (context) => FirstPage(),
+        '/2': (context) => SecondPage(),
+        '/3': (context) => ThirdPage(),
+        '/4': (context) => FourthPage(),
+        '/5':(context) => Fifthpage(),
+        '/6':(context) => SixthPage(),
       },
     );
   }
@@ -71,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: catOnShow,
               ),
             Text(
-              'kikkik',
+              'กดไรนักหนา',
             ),
             Text(
               '$_counter',
@@ -176,8 +178,8 @@ class SecondPage extends StatelessWidget {
               TableRow(
                 children: [
                   Text('1'),
-                  Text('Zee'),
-                  Text('F'),
+                  Text('Moss'),
+                  Text('M'),
                 ],
               ),
               TableRow(
@@ -268,4 +270,135 @@ class FourthPage extends StatelessWidget {
       ),
     );
   }  
+}
+
+class Fifthpage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Grid View'),
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: 
+          List.generate(6, (index) {
+            return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/${index+1}');
+              },
+              child: Container(
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Center(
+                  child: Text(
+                    'Item ${index+1}',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                ),
+              ),
+            );
+          }),
+      ),
+    );
+  }
+}
+
+class SixthPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Form...'),
+      ),
+      body: MyCustomForm(),
+      );
+   }
+}
+
+class MyCustomForm extends StatefulWidget{
+  @override
+  _MyCustomFormState createState() => _MyCustomFormState();
+}
+
+class _MyCustomFormState extends State<MyCustomForm> {
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.person),
+              hintText: 'Your First Name',
+              labelText: 'First Name'
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty){
+                return 'Please Enter first name.';
+            }
+          },
+        ),
+          TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.family_restroom),
+              hintText: 'Your Last Name',
+              labelText: 'Last Name'
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty){
+                return 'Please Enter Last name.';
+            }
+          },
+        ),
+        TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.dangerous),
+              hintText: 'Your Age',
+              labelText: 'Ages'
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty){
+                return 'Please Enter your ages.';
+            }
+            try {
+              if (int.parse(value) < 15 || int.parse(value) > 100 ){
+                return 'plaese enter valid age ==> 15-100';
+              }
+            } catch (e) {
+              return 'please enter number only';
+            }
+          },
+        ),
+        TextFormField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.star),
+              hintText: 'Student ID',
+              labelText: 'Student ID'
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty){
+                return 'Please Enter Student ID.';
+            }
+          },
+        ),
+        ElevatedButton(
+          onPressed: (){
+            if  (_formKey.currentState!.validate()){
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Processing'),
+              ));
+            }
+          },
+            child: Text('Submit'),
+          ),
+        ],
+      ),
+    );
+  }
 }
