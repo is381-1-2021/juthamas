@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.orange,
-        accentColor: Colors.pink,
+        primaryColor: Colors.purple,
+        accentColor: Colors.purple,
         textTheme: TextTheme(
           bodyText2: TextStyle(color: Colors.purple),
         ),
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: catOnShow,
               ),
             Text(
-              'กดไรนักหนา',
+              'kkkkk',
             ),
             Text(
               '$_counter',
@@ -178,8 +178,8 @@ class SecondPage extends StatelessWidget {
               TableRow(
                 children: [
                   Text('1'),
-                  Text('Moss'),
-                  Text('M'),
+                  Text('Zee'),
+                  Text('F'),
                 ],
               ),
               TableRow(
@@ -192,8 +192,8 @@ class SecondPage extends StatelessWidget {
               TableRow(
                 children: [
                   Text('3'),
-                  Text('JC'),
-                  Text('F'),
+                  Text('NJ'),
+                  Text('M'),
                 ],
               ),
             ],
