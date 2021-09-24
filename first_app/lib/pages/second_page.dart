@@ -45,7 +45,7 @@ class SecondPage extends StatelessWidget {
               TableRow(
                 children: [
                   Text('2'),
-                  Text('Winai'),
+                  Text('Moss'),
                   Text('M'),
                 ],
               ),
